@@ -1,20 +1,33 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, StyleSheet, FlatList } from 'react-native';
+import devices_data from "./src/components/data.json";
+import ToolCard from './src/components/ToolCard/ToolCard';
+import Header from './src/components/Header/Header';
+import SearchBar from './src/components/SearchBar/SearchBar';
 
 export default function App() {
+
+  const renderDevices = ({item}) => <ToolCard tools={item} />;
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView style={styles.container}>
+      <Header />
+      <SearchBar />
+      {/* <FlatList 
+      keyExtractor={(item) => item.id.toString()}
+          data= {devices_data}
+          renderItem={renderDevices}
+          numColumns={2}
+        /> */}
+    </SafeAreaView>
   );
 }
 
-const styles = StyleSheet.create({
+
+const styles= StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    flex : 1,
+    flexWrap: true,
+    backgroundColor: "white",
+    flexDirection: "column",
+  }
 });
